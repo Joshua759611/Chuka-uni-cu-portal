@@ -1,5 +1,5 @@
 module.exports={
     HOST:"localhost",
     PORT: 27017,
-    DB:"register_db"
+    DB:"ACSC_Assignment"
 };

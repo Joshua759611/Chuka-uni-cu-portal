@@ -9,12 +9,13 @@ var corsOptions= {
 };
 app.use(cors(corsOptions));
 // opening mongoose connection to MongoDB
-const db=require("./app/models");
+const db=require("../app/models");
 const { connect } = require("mongoose");
 const { count } = require("../app/models/role.model");
 const Role=db.role;
 db.mongoose;
-connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`,{
+//connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`,{
+    connect(`mongodb+srv://DB_Gurus:acsc2022@acsccluster.ye3vl.mongodb.net/?retryWrites=true&w=majority`,{
     useNewUrlParser:true,
     useUnifiedTopology:true
 })
@@ -44,6 +45,9 @@ app.get("/", (req,res)=> {
     res.json({message:"Welcome To Chuka University Christian Union Portal."});
 
 });
+//routes
+require('../app/routes/auth.routes')(app);
+require('../app/routes/user.routes')(app);
 //set port, listen for requests
 const PORT =process.env.PORT || 8080;
 app.listen(PORT, ()=>{
